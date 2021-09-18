@@ -5,27 +5,19 @@ import { requestFetch } from "../Redux/FeatchRaw/action";
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
-  const { fetchData, loading } = useSelector((state: RootState) => state.raws);
-
-  const fetchDataCall = useCallback(() => {
-    dispatch(requestFetch());
-  }, [dispatch]);
+  const fetchData = useSelector((state: RootState) => state.raws.data);
 
   useEffect(() => {
-    fetchDataCall();
-  }, [fetchDataCall]);
-  console.log("type>>>", typeof fetchData);
-  console.log("DATA", fetchData);
+    dispatch(requestFetch());
+  }, []);
+
   return (
     <>
-      {loading
-        ? "...loading...."
-        : // @ts-ignore
-          fetchData.map((item) => (
-            <div key={item.id}>
-              <h1>{item.title}</h1>
-            </div>
-          ))}
+      {fetchData.map((item) => (
+        <div key={item.id}>
+          <h1>{item.title}</h1>
+        </div>
+      ))}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { Action } from "redux";
-type fetchDataType = {
+export type fetchDataType = {
   userId?: number;
   id?: number;
   title?: string;

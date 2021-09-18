@@ -8,7 +8,7 @@ export function* fetchchRawDatas() {
   try {
     yield put(fetchStart());
     const response: ResponseGenerator = yield call(fetchDataService);
-    yield put(fetchSuccess(response));
+    yield put(fetchSuccess(response.data));
   } catch (err) {
   } finally {
     yield put(fetchEnd());
